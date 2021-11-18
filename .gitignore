@@ -1,0 +1,7 @@
+/.idea/
+/ed-vdf.iml
+/node_modules/
+
+#Hardhat files
+/cache/
+/artifacts/
