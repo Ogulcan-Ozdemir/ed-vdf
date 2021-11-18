@@ -5,3 +5,5 @@
 #Hardhat files
 /cache/
 /artifacts/
+/test/avispa/
+/test/span/
