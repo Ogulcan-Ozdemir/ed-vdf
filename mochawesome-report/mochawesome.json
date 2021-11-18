@@ -5,9 +5,9 @@
     "passes": 20,
     "pending": 0,
     "failures": 0,
-    "start": "2021-11-17T19:20:17.464Z",
-    "end": "2021-11-17T19:21:40.833Z",
-    "duration": 83369,
+    "start": "2021-11-18T08:05:41.057Z",
+    "end": "2021-11-18T08:07:03.210Z",
+    "duration": 82153,
     "testsRegistered": 20,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "b0ba8f39-64d5-4233-b300-ad05672d6e46",
+      "uuid": "ed172461-40b1-4c51-bcb2-56b64010920d",
       "title": "",
       "fullFile": "",
       "file": "",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "b134f3be-931c-4992-b6dd-f891360e966e",
+          "uuid": "3452878f-92c8-4588-ae83-45a70d666eef",
           "title": "ED_VDF contract",
           "fullFile": "C:\\dev\\src\\ed-vdf\\test\\edvdf.contract.test.js",
           "file": "\\test\\edvdf.contract.test.js",
@@ -36,7 +36,7 @@
               "title": "\"before all\" hook",
               "fullTitle": "ED_VDF contract \"before all\" hook",
               "timedOut": false,
-              "duration": 1636,
+              "duration": 1348,
               "state": null,
               "speed": null,
               "pass": false,
@@ -45,8 +45,8 @@
               "context": null,
               "code": "EDVdfContractABI = await ethers.getContractFactory(CONTRACT_NAME);\nconst accounts = (await ethers.getSigners()).slice(0, 5);\nfor(let account of accounts){\n    SECRET_SHARER_PARTICIPANTS.push(await account.getAddress());\n}",
               "err": {},
-              "uuid": "c1989ab7-4db0-4086-9cf0-a4052bd9708e",
-              "parentUUID": "b134f3be-931c-4992-b6dd-f891360e966e",
+              "uuid": "18d698ca-c83d-4424-9415-2bf04330465f",
+              "parentUUID": "3452878f-92c8-4588-ae83-45a70d666eef",
               "isHook": true,
               "skipped": false
             }
@@ -55,7 +55,7 @@
           "tests": [],
           "suites": [
             {
-              "uuid": "99654704-5cfe-4a7e-ae05-8739194a79f4",
+              "uuid": "250bd231-ffdd-411d-b875-e81a3296f495",
               "title": "deployment",
               "fullFile": "C:\\dev\\src\\ed-vdf\\test\\edvdf.contract.test.js",
               "file": "\\test\\edvdf.contract.test.js",
@@ -66,7 +66,7 @@
                   "title": "should be successful",
                   "fullTitle": "ED_VDF contract deployment should be successful",
                   "timedOut": false,
-                  "duration": 656,
+                  "duration": 576,
                   "state": "passed",
                   "speed": "slow",
                   "pass": true,
@@ -75,26 +75,26 @@
                   "context": null,
                   "code": "const EDVdfContract = await EDVdfContractABI.deploy();\nconst actualStatus = await EDVdfContract.STATUS();\nreturn expect(actualStatus).to.be.eql('INIT');",
                   "err": {},
-                  "uuid": "216a6135-29bf-4189-974d-45788ba8c596",
-                  "parentUUID": "99654704-5cfe-4a7e-ae05-8739194a79f4",
+                  "uuid": "97e7efd1-342c-4ab1-8c03-c75a1baace1f",
+                  "parentUUID": "250bd231-ffdd-411d-b875-e81a3296f495",
                   "isHook": false,
                   "skipped": false
                 }
               ],
               "suites": [],
               "passes": [
-                "216a6135-29bf-4189-974d-45788ba8c596"
+                "97e7efd1-342c-4ab1-8c03-c75a1baace1f"
               ],
               "failures": [],
               "pending": [],
               "skipped": [],
-              "duration": 656,
+              "duration": 576,
               "root": false,
               "rootEmpty": false,
               "_timeout": 300000
             },
             {
-              "uuid": "c6f87ac2-b625-4213-ab83-aae9f334906b",
+              "uuid": "3d2a18d8-77c0-4da5-a965-9072f6ce4b0a",
               "title": "Setup",
               "fullFile": "C:\\dev\\src\\ed-vdf\\test\\edvdf.contract.test.js",
               "file": "\\test\\edvdf.contract.test.js",
@@ -105,7 +105,7 @@
                   "title": "should be successful with random 256 bit prime number",
                   "fullTitle": "ED_VDF contract Setup should be successful with random 256 bit prime number",
                   "timedOut": false,
-                  "duration": 4700,
+                  "duration": 4470,
                   "state": "passed",
                   "speed": "slow",
                   "pass": true,
@@ -114,26 +114,26 @@
                   "context": null,
                   "code": "const EdVdfContract = await EDVdfContractABI.deploy();\nconst event_SETUP = WaitEvent(EDVdfContractABI.signer.provider, \"SETUP(uint256)\");\nconst {PublicParameters, Totient, PrivateParameter} = await EDVDF.Setup(256, TIME[\"10s\"]);\nconst recipient = (await ethers.getSigners())[8];\nawait EdVdfContract.Setup(PublicParameters.N, PublicParameters.Time, recipient);\nconst expected_x = BigInt((await event_SETUP()).data);\nconst actual_x = BigInt(await EdVdfContract.x());\nconst actual_Status = await EdVdfContract.STATUS();\nreturn expect(actual_x).to.be.eql(expected_x)\n    && expect(actual_Status).to.be.eql('SETUP');",
                   "err": {},
-                  "uuid": "2ae0818c-9611-4863-b227-7edee987b0e2",
-                  "parentUUID": "c6f87ac2-b625-4213-ab83-aae9f334906b",
+                  "uuid": "e82bc214-b1c3-4e58-9ba7-e6d3a050cef9",
+                  "parentUUID": "3d2a18d8-77c0-4da5-a965-9072f6ce4b0a",
                   "isHook": false,
                   "skipped": false
                 }
               ],
               "suites": [],
               "passes": [
-                "2ae0818c-9611-4863-b227-7edee987b0e2"
+                "e82bc214-b1c3-4e58-9ba7-e6d3a050cef9"
               ],
               "failures": [],
               "pending": [],
               "skipped": [],
-              "duration": 4700,
+              "duration": 4470,
               "root": false,
               "rootEmpty": false,
               "_timeout": 300000
             },
             {
-              "uuid": "10d8092e-7c10-475d-aa9c-c3094a9b556a",
+              "uuid": "8d75dfe1-3373-465c-9674-0fe4d105791d",
               "title": "EarlyDecryptionSetup",
               "fullFile": "C:\\dev\\src\\ed-vdf\\test\\edvdf.contract.test.js",
               "file": "\\test\\edvdf.contract.test.js",
@@ -144,7 +144,7 @@
                   "title": "should be successful with random 256 bit prime number",
                   "fullTitle": "ED_VDF contract EarlyDecryptionSetup should be successful with random 256 bit prime number",
                   "timedOut": false,
-                  "duration": 10339,
+                  "duration": 9590,
                   "state": "passed",
                   "speed": "slow",
                   "pass": true,
@@ -153,26 +153,26 @@
                   "context": null,
                   "code": "const EdVdfContract = await EDVdfContractABI.deploy();\nconst event_SETUP = WaitEvent(EDVdfContractABI.signer.provider, \"SETUP(uint256)\");\nconst event_EARLY_DECRYPTION_SETUP = WaitEvent(EDVdfContractABI.signer.provider, \"EARLY_DECRYPTION_SETUP(string[])\");\nconst {PublicParameters, Totient} = await EDVDF.Setup(256, TIME[\"10s\"]);\nconst recipient = (await ethers.getSigners())[8];\nawait EdVdfContract.Setup(PublicParameters.N, PublicParameters.Time, recipient);\nconst expected_x = BigInt((await event_SETUP()).data);\nconst actual_x = BigInt(await EdVdfContract.x());\nconst {PrivateParameter} = await EDVDF.GenPrivateParameter(PublicParameters, Totient, actual_x);\nconst shares = EDVDF.EarlyDecryptionSetup(Buffer.from(PrivateParameter.toString()), { shares: 5, threshold: 3 });\nconst shareDistribution = await sendSecretSharesToParticipants(EDVdfContractABI.signer, SECRET_SHARER_PARTICIPANTS, shares);\nconst key = AES.getAsKey(PrivateParameter);\nconst {iv, encrypted} = AES.encrypt(key, message);\nawait EdVdfContract.EarlyDecryptionSetup(SECRET_SHARER_PARTICIPANTS, encrypted);\nawait event_EARLY_DECRYPTION_SETUP();\nconst actual_SECRET_SHARER_PARTICIPANTS = await EdVdfContract.get_SECRET_SHARER_PARTICIPANTS();\nreturn expect(actual_x).to.be.eql(expected_x)\n    && expect(actual_SECRET_SHARER_PARTICIPANTS).to.be.eql(SECRET_SHARER_PARTICIPANTS);",
                   "err": {},
-                  "uuid": "acce3cb3-e3ae-4091-8c9a-6dd7e0d24842",
-                  "parentUUID": "10d8092e-7c10-475d-aa9c-c3094a9b556a",
+                  "uuid": "37635755-5240-4f61-bdf8-19cc26edfb23",
+                  "parentUUID": "8d75dfe1-3373-465c-9674-0fe4d105791d",
                   "isHook": false,
                   "skipped": false
                 }
               ],
               "suites": [],
               "passes": [
-                "acce3cb3-e3ae-4091-8c9a-6dd7e0d24842"
+                "37635755-5240-4f61-bdf8-19cc26edfb23"
               ],
               "failures": [],
               "pending": [],
               "skipped": [],
-              "duration": 10339,
+              "duration": 9590,
               "root": false,
               "rootEmpty": false,
               "_timeout": 300000
             },
             {
-              "uuid": "9214e6c7-effa-4206-9b5d-05607d09d30b",
+              "uuid": "4970299c-4007-4b25-8f85-8eae392ad43d",
               "title": "Eval",
               "fullFile": "C:\\dev\\src\\ed-vdf\\test\\edvdf.contract.test.js",
               "file": "\\test\\edvdf.contract.test.js",
@@ -183,7 +183,7 @@
                   "title": "should be successful with random 256 bit prime number",
                   "fullTitle": "ED_VDF contract Eval should be successful with random 256 bit prime number",
                   "timedOut": false,
-                  "duration": 21464,
+                  "duration": 12234,
                   "state": "passed",
                   "speed": "slow",
                   "pass": true,
@@ -192,26 +192,26 @@
                   "context": null,
                   "code": "const EdVdfContract = await EDVdfContractABI.deploy();\nconst event_SETUP = WaitEvent(EDVdfContractABI.signer.provider, \"SETUP(uint256)\");\nconst event_EARLY_DECRYPTION_SETUP = WaitEvent(EDVdfContractABI.signer.provider, \"EARLY_DECRYPTION_SETUP(string[])\");\nconst event_EVAL = WaitEvent(EDVdfContractABI.signer.provider, \"EVAL(uint256,uint256,uint256)\");\nconst {PublicParameters, Totient} = await EDVDF.Setup(256, TIME[\"10s\"]);\nconst recipient = (await ethers.getSigners())[8];\nawait EdVdfContract.Setup(PublicParameters.N, PublicParameters.Time, recipient);\nconst expected_x = BigInt((await event_SETUP()).data);\nconst actual_x = BigInt(await EdVdfContract.x());\nconst {PrivateParameter} = await EDVDF.GenPrivateParameter(PublicParameters, Totient, actual_x);\nconst shares = EDVDF.EarlyDecryptionSetup(Buffer.from(PrivateParameter.toString()), { shares: 5, threshold: 3 });\nconst shareDistributionEvents = await sendSecretSharesToParticipants(EDVdfContractABI.signer, SECRET_SHARER_PARTICIPANTS, shares);\nconst key = AES.getAsKey(PrivateParameter.value);\nconst {iv, encrypted} = AES.encrypt(key, message);\nawait EdVdfContract.EarlyDecryptionSetup(SECRET_SHARER_PARTICIPANTS, encrypted);\n// await event_EARLY_DECRYPTION_SETUP();\nawait event_EVAL();\nconst {y: evalPrivateParameter, pi} = await EDVDF.Eval(PublicParameters, actual_x);\nconst encryptedMessage = await EdVdfContract.encryptedMessage();\nconst evalKey = AES.getAsKey(evalPrivateParameter.value);\nconst decryptedMessage = AES.decrypt({iv, key: evalKey}, encryptedMessage);\nconst actual_Status = await EdVdfContract.STATUS();\nreturn expect(actual_x).to.be.eql(expected_x)\n    && expect(decryptedMessage).to.be.eql(message)\n    && expect(actual_Status).to.be.eql('EVAL');",
                   "err": {},
-                  "uuid": "a54da2cb-2e58-430d-8a9b-117c0c83e194",
-                  "parentUUID": "9214e6c7-effa-4206-9b5d-05607d09d30b",
+                  "uuid": "e3a4611d-ed5d-496e-871a-ea4d273337ad",
+                  "parentUUID": "4970299c-4007-4b25-8f85-8eae392ad43d",
                   "isHook": false,
                   "skipped": false
                 }
               ],
               "suites": [],
               "passes": [
-                "a54da2cb-2e58-430d-8a9b-117c0c83e194"
+                "e3a4611d-ed5d-496e-871a-ea4d273337ad"
               ],
               "failures": [],
               "pending": [],
               "skipped": [],
-              "duration": 21464,
+              "duration": 12234,
               "root": false,
               "rootEmpty": false,
               "_timeout": 300000
             },
             {
-              "uuid": "0853da25-2151-4618-9f29-f0b696736944",
+              "uuid": "5fe6ec8f-b722-4c65-93a7-72ad14f872e6",
               "title": "Verify",
               "fullFile": "C:\\dev\\src\\ed-vdf\\test\\edvdf.contract.test.js",
               "file": "\\test\\edvdf.contract.test.js",
@@ -222,7 +222,7 @@
                   "title": "should be successful with random 256 bit prime number",
                   "fullTitle": "ED_VDF contract Verify should be successful with random 256 bit prime number",
                   "timedOut": false,
-                  "duration": 20649,
+                  "duration": 24630,
                   "state": "passed",
                   "speed": "slow",
                   "pass": true,
@@ -231,20 +231,20 @@
                   "context": null,
                   "code": "const EdVdfContract = await EDVdfContractABI.deploy();\nconst event_SETUP = WaitEvent(EDVdfContractABI.signer.provider, \"SETUP(uint256)\");\nconst event_EARLY_DECRYPTION_SETUP = WaitEvent(EDVdfContractABI.signer.provider, \"EARLY_DECRYPTION_SETUP(string[])\");\nconst event_EVAL = WaitEvent(EDVdfContractABI.signer.provider, \"EVAL(uint256,uint256,uint256)\");\nconst event_VERIFY = WaitEvent(EDVdfContractABI.signer.provider, \"VERIFY(address,uint256,uint256)\");\nconst {PublicParameters, Totient} = await EDVDF.Setup(256, TIME[\"10s\"]);\nconst recipient = (await ethers.getSigners())[8];\nawait EdVdfContract.Setup(PublicParameters.N, PublicParameters.Time, recipient);\nconst expected_x = BigInt((await event_SETUP()).data);\nconst actual_x = BigInt(await EdVdfContract.x());\nconst {PrivateParameter} = await EDVDF.GenPrivateParameter(PublicParameters, Totient, actual_x);\nconst shares = EDVDF.EarlyDecryptionSetup(Buffer.from(PrivateParameter.toString()), { shares: 5, threshold: 3 });\nconst shareDistribution = await sendSecretSharesToParticipants(EDVdfContractABI.signer, SECRET_SHARER_PARTICIPANTS, shares);\nconst key = AES.getAsKey(PrivateParameter.value);\nconst {iv, encrypted} = AES.encrypt(key, message);\nawait EdVdfContract.EarlyDecryptionSetup(SECRET_SHARER_PARTICIPANTS, encrypted);\n// await event_EARLY_DECRYPTION_SETUP();\nawait event_EVAL();\nconst {y: evalPrivateParameter, pi} = await EDVDF.Eval(PublicParameters, actual_x);\nawait EDVDF.Verify(PublicParameters, actual_x, evalPrivateParameter, pi);\nlog(new Date().toISOString(), `Verify_Wes18`);\nconst actual_Verify_TRANSACTION = (await EdVdfContract.Verify(evalPrivateParameter.value, pi.value));\nawait event_VERIFY();\nconst encryptedMessage = await EdVdfContract.encryptedMessage();\nconst evalKey = AES.getAsKey(evalPrivateParameter.value);\nconst decryptedMessage = AES.decrypt({iv, key: evalKey}, encryptedMessage);\nconst actual_SECRET_SHARER_PARTICIPANTS = await EdVdfContract.get_SECRET_SHARER_PARTICIPANTS();\nconst actual_Status = await EdVdfContract.STATUS();\nreturn expect(actual_x).to.be.eql(expected_x)\n    && expect(actual_SECRET_SHARER_PARTICIPANTS).to.be.eql(SECRET_SHARER_PARTICIPANTS)\n    && expect(decryptedMessage).to.be.eql(message)\n    && expect(actual_Status).to.be.eql('VERIFY');",
                   "err": {},
-                  "uuid": "215f7d62-355d-4956-9ce0-287086e68b68",
-                  "parentUUID": "0853da25-2151-4618-9f29-f0b696736944",
+                  "uuid": "c01f6600-4480-4603-8edf-5c48ba06b7a2",
+                  "parentUUID": "5fe6ec8f-b722-4c65-93a7-72ad14f872e6",
                   "isHook": false,
                   "skipped": false
                 }
               ],
               "suites": [],
               "passes": [
-                "215f7d62-355d-4956-9ce0-287086e68b68"
+                "c01f6600-4480-4603-8edf-5c48ba06b7a2"
               ],
               "failures": [],
               "pending": [],
               "skipped": [],
-              "duration": 20649,
+              "duration": 24630,
               "root": false,
               "rootEmpty": false,
               "_timeout": 300000
@@ -260,7 +260,7 @@
           "_timeout": 300000
         },
         {
-          "uuid": "a3cac84a-e88e-49af-a6f1-b3fab74596c4",
+          "uuid": "3058151d-f301-4548-b1e4-b2b6d0256b3e",
           "title": "ED-VDF",
           "fullFile": "C:\\dev\\src\\ed-vdf\\test\\edvdf.test.js",
           "file": "\\test\\edvdf.test.js",
@@ -268,10 +268,10 @@
           "afterHooks": [],
           "tests": [
             {
-              "title": "Setup should be successfully return {PublicParameters[N, Time_10s], PrivateParameters}",
-              "fullTitle": "ED-VDF Setup should be successfully return {PublicParameters[N, Time_10s], PrivateParameters}",
+              "title": "Setup should be successfully return {PublicParameters[N, TIME[\"10s\"], PrivateParameters}",
+              "fullTitle": "ED-VDF Setup should be successfully return {PublicParameters[N, TIME[\"10s\"], PrivateParameters}",
               "timedOut": false,
-              "duration": 146,
+              "duration": 139,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -280,8 +280,8 @@
               "context": null,
               "code": "const {PublicParameters, Totient} = await EDVDF.Setup(RSA_KEYS_BIT_LENGTH, constants.TIME[\"10s\"]);\nreturn expect(typeof PublicParameters.N).to.be.eql('bigint')\n    && expect(PublicParameters.Time).to.be.eql(constants.TIME[\"10s\"])\n    && expect(typeof Totient).to.be.eql('bigint');",
               "err": {},
-              "uuid": "8fe20721-ccc4-4dce-b2cd-d73f9c5efce3",
-              "parentUUID": "a3cac84a-e88e-49af-a6f1-b3fab74596c4",
+              "uuid": "e057073a-9d4a-4d32-a0c2-422f2ed6d51b",
+              "parentUUID": "3058151d-f301-4548-b1e4-b2b6d0256b3e",
               "isHook": false,
               "skipped": false
             },
@@ -289,7 +289,7 @@
               "title": "GenPrivateParameter should be successfully return {y, pi}",
               "fullTitle": "ED-VDF GenPrivateParameter should be successfully return {y, pi}",
               "timedOut": false,
-              "duration": 1012,
+              "duration": 258,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -298,8 +298,8 @@
               "context": null,
               "code": "const {PublicParameters, Totient} = await EDVDF.Setup(RSA_KEYS_BIT_LENGTH, constants.TIME[\"10s\"]);\nconst {PrivateParameter, pi} = await EDVDF.GenPrivateParameter(PublicParameters, Totient, X);\nreturn expect(BigInteger.isInstance(PrivateParameter)).to.be.true\n    && expect(BigInteger.isInstance(pi)).to.be.true;",
               "err": {},
-              "uuid": "a80b19aa-2140-45bc-b4ce-e9d04a466f93",
-              "parentUUID": "a3cac84a-e88e-49af-a6f1-b3fab74596c4",
+              "uuid": "e62cf8b9-d940-430c-94cb-98e9df1684b9",
+              "parentUUID": "3058151d-f301-4548-b1e4-b2b6d0256b3e",
               "isHook": false,
               "skipped": false
             },
@@ -316,8 +316,8 @@
               "context": null,
               "code": "const {PublicParameters, Totient} = await EDVDF.Setup(RSA_KEYS_BIT_LENGTH, constants.TIME[\"10s\"]);\nconst y = await EDVDF.ShortCircuitEval(PublicParameters, Totient, X);\nreturn expect(BigInteger.isInstance(y)).to.be.true;",
               "err": {},
-              "uuid": "1097245d-f398-40d0-8fee-88f610a91eed",
-              "parentUUID": "a3cac84a-e88e-49af-a6f1-b3fab74596c4",
+              "uuid": "1e51ad21-6b47-45a6-86d7-c34aa20cb2a4",
+              "parentUUID": "3058151d-f301-4548-b1e4-b2b6d0256b3e",
               "isHook": false,
               "skipped": false
             },
@@ -325,7 +325,7 @@
               "title": "EarlyDecryptionSetup should be successfully return SharedPrivateParameters",
               "fullTitle": "ED-VDF EarlyDecryptionSetup should be successfully return SharedPrivateParameters",
               "timedOut": false,
-              "duration": 143,
+              "duration": 150,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -334,8 +334,8 @@
               "context": null,
               "code": "const {PublicParameters, Totient} = await EDVDF.Setup(RSA_KEYS_BIT_LENGTH, constants.TIME[\"10s\"]);\nconst PrivateParameter = await EDVDF.ShortCircuitEval(PublicParameters, Totient, X);\nconst SharedPrivateParameters = EDVDF.EarlyDecryptionSetup(PrivateParameter, { shares: 5, threshold: 3 });\nreturn expect(Array.isArray(SharedPrivateParameters)).to.be.true;",
               "err": {},
-              "uuid": "19f708e6-3710-4f73-8317-2683b91318cd",
-              "parentUUID": "a3cac84a-e88e-49af-a6f1-b3fab74596c4",
+              "uuid": "2127cb87-6de7-4684-9276-b663fc1664ef",
+              "parentUUID": "3058151d-f301-4548-b1e4-b2b6d0256b3e",
               "isHook": false,
               "skipped": false
             },
@@ -343,7 +343,7 @@
               "title": "EarlyDecryption ReconstructedPrivateParameter should be equal PrivateParameter",
               "fullTitle": "ED-VDF EarlyDecryption ReconstructedPrivateParameter should be equal PrivateParameter",
               "timedOut": false,
-              "duration": 147,
+              "duration": 152,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -352,8 +352,8 @@
               "context": null,
               "code": "const {PublicParameters, Totient} = await EDVDF.Setup(RSA_KEYS_BIT_LENGTH, constants.TIME[\"10s\"]);\nconst PrivateParameter = await EDVDF.ShortCircuitEval(PublicParameters, Totient, X);\nconst SharedPrivateParameters = EDVDF.EarlyDecryptionSetup(PrivateParameter, { shares: 5, threshold: 3 });\nconst ReconstructedPrivateParameter = EDVDF.EarlyDecryption(SharedPrivateParameters.slice(1, 4));\nreturn expect(ReconstructedPrivateParameter).to.be.eql(PrivateParameter.value);",
               "err": {},
-              "uuid": "f379b39c-30c5-4a78-9248-013b0e867582",
-              "parentUUID": "a3cac84a-e88e-49af-a6f1-b3fab74596c4",
+              "uuid": "0824d4d0-0b49-4b2f-ab20-ff343e441d38",
+              "parentUUID": "3058151d-f301-4548-b1e4-b2b6d0256b3e",
               "isHook": false,
               "skipped": false
             },
@@ -361,7 +361,7 @@
               "title": "Eval should be successfully return {y, pi}",
               "fullTitle": "ED-VDF Eval should be successfully return {y, pi}",
               "timedOut": false,
-              "duration": 5101,
+              "duration": 3453,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -370,8 +370,8 @@
               "context": null,
               "code": "const {PublicParameters, Totient} = await EDVDF.Setup(RSA_KEYS_BIT_LENGTH, constants.TIME[\"10s\"]);\nconst {y, pi} = await EDVDF.Eval(PublicParameters, X);\nreturn expect(BigInteger.isInstance(y)).to.be.true\n    && expect(BigInteger.isInstance(pi)).to.be.true;",
               "err": {},
-              "uuid": "b114534e-3902-4aac-8e91-9b1f2aff29c9",
-              "parentUUID": "a3cac84a-e88e-49af-a6f1-b3fab74596c4",
+              "uuid": "7b8a334c-748b-4e1e-9005-6bf5f13fee22",
+              "parentUUID": "3058151d-f301-4548-b1e4-b2b6d0256b3e",
               "isHook": false,
               "skipped": false
             },
@@ -379,7 +379,7 @@
               "title": "_Eval should be successfully return y",
               "fullTitle": "ED-VDF _Eval should be successfully return y",
               "timedOut": false,
-              "duration": 520,
+              "duration": 561,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -388,8 +388,8 @@
               "context": null,
               "code": "const {PublicParameters, Totient} = await EDVDF.Setup(RSA_KEYS_BIT_LENGTH, constants.TIME[\"10s\"]);\nconst y = await EDVDF._Eval(PublicParameters, X);\nreturn expect(BigInteger.isInstance(y)).to.be.true;",
               "err": {},
-              "uuid": "19bc6638-c344-462a-8cd8-b0c48bbe0d9b",
-              "parentUUID": "a3cac84a-e88e-49af-a6f1-b3fab74596c4",
+              "uuid": "7724086d-4e19-40e0-a537-0ac547dcdef9",
+              "parentUUID": "3058151d-f301-4548-b1e4-b2b6d0256b3e",
               "isHook": false,
               "skipped": false
             },
@@ -397,7 +397,7 @@
               "title": "Verify should be successfully return true",
               "fullTitle": "ED-VDF Verify should be successfully return true",
               "timedOut": false,
-              "duration": 12732,
+              "duration": 16054,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -406,8 +406,8 @@
               "context": null,
               "code": "const {PublicParameters, Totient} = await EDVDF.Setup(RSA_KEYS_BIT_LENGTH, constants.TIME[\"10s\"]);\nconst {y, pi} = await EDVDF.Eval(PublicParameters, X);\nconst t = await EDVDF.Verify(PublicParameters, X, y, pi);\nreturn expect(t).to.be.true;",
               "err": {},
-              "uuid": "8d236af0-5413-4ba9-8290-c47ab2b43567",
-              "parentUUID": "a3cac84a-e88e-49af-a6f1-b3fab74596c4",
+              "uuid": "cf479de1-3899-44ad-9a25-b7e3ea85a235",
+              "parentUUID": "3058151d-f301-4548-b1e4-b2b6d0256b3e",
               "isHook": false,
               "skipped": false
             },
@@ -415,7 +415,7 @@
               "title": "HPrime should be successfully return Challenge",
               "fullTitle": "ED-VDF HPrime should be successfully return Challenge",
               "timedOut": false,
-              "duration": 3752,
+              "duration": 8145,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -424,34 +424,34 @@
               "context": null,
               "code": "const {PublicParameters: {N, Time}, Totient} = await EDVDF.Setup(RSA_KEYS_BIT_LENGTH, constants.TIME[\"10s\"]);\nconst {y, pi} = await EDVDF.GenPrivateParameter({N, Time}, Totient, X);\nconst Challenge = await EDVDF.HPrime(N, Time, X, y);\nreturn expect(typeof Challenge === \"bigint\").to.be.true;",
               "err": {},
-              "uuid": "dc83d6e1-7a84-4451-8953-306d99e2808a",
-              "parentUUID": "a3cac84a-e88e-49af-a6f1-b3fab74596c4",
+              "uuid": "521017c6-3c4b-4410-acf3-2eb9f4c3fbd5",
+              "parentUUID": "3058151d-f301-4548-b1e4-b2b6d0256b3e",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "8fe20721-ccc4-4dce-b2cd-d73f9c5efce3",
-            "a80b19aa-2140-45bc-b4ce-e9d04a466f93",
-            "1097245d-f398-40d0-8fee-88f610a91eed",
-            "19f708e6-3710-4f73-8317-2683b91318cd",
-            "f379b39c-30c5-4a78-9248-013b0e867582",
-            "b114534e-3902-4aac-8e91-9b1f2aff29c9",
-            "19bc6638-c344-462a-8cd8-b0c48bbe0d9b",
-            "8d236af0-5413-4ba9-8290-c47ab2b43567",
-            "dc83d6e1-7a84-4451-8953-306d99e2808a"
+            "e057073a-9d4a-4d32-a0c2-422f2ed6d51b",
+            "e62cf8b9-d940-430c-94cb-98e9df1684b9",
+            "1e51ad21-6b47-45a6-86d7-c34aa20cb2a4",
+            "2127cb87-6de7-4684-9276-b663fc1664ef",
+            "0824d4d0-0b49-4b2f-ab20-ff343e441d38",
+            "7b8a334c-748b-4e1e-9005-6bf5f13fee22",
+            "7724086d-4e19-40e0-a537-0ac547dcdef9",
+            "cf479de1-3899-44ad-9a25-b7e3ea85a235",
+            "521017c6-3c4b-4410-acf3-2eb9f4c3fbd5"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 23695,
+          "duration": 29054,
           "root": false,
           "rootEmpty": false,
           "_timeout": 300000
         },
         {
-          "uuid": "d1e47f48-c5ec-43a1-9284-33e44b423081",
+          "uuid": "139a8898-d26f-4cae-90c9-c6cc7591a631",
           "title": "RSA",
           "fullFile": "C:\\dev\\src\\ed-vdf\\test\\rsa.test.js",
           "file": "\\test\\rsa.test.js",
@@ -462,7 +462,7 @@
               "title": "Setup should be successfully return {SecretKeys, PublicKeys} with bit length 256",
               "fullTitle": "RSA Setup should be successfully return {SecretKeys, PublicKeys} with bit length 256",
               "timedOut": false,
-              "duration": 166,
+              "duration": 173,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -471,26 +471,26 @@
               "context": null,
               "code": "const {SecretKeys, PublicKeys} = await RSA.Setup(256);\nreturn expect(typeof SecretKeys.Totient).to.be.eql('bigint')\n    && expect(typeof SecretKeys.d).to.be.eql('bigint')\n    && expect(typeof PublicKeys.N).to.be.eql('bigint')\n    && expect(typeof PublicKeys.e).to.be.eql('bigint')\n    && expect(PublicKeys.e).to.be.equal(65537n);",
               "err": {},
-              "uuid": "4c359f82-cadf-4dfb-8e61-4f96ca4ecfe5",
-              "parentUUID": "d1e47f48-c5ec-43a1-9284-33e44b423081",
+              "uuid": "602ce6b0-46c1-4f80-b378-15e92970e5fc",
+              "parentUUID": "139a8898-d26f-4cae-90c9-c6cc7591a631",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "4c359f82-cadf-4dfb-8e61-4f96ca4ecfe5"
+            "602ce6b0-46c1-4f80-b378-15e92970e5fc"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 166,
+          "duration": 173,
           "root": false,
           "rootEmpty": false,
           "_timeout": 300000
         },
         {
-          "uuid": "5696eb61-9c7f-418c-b56c-6fdf1f8524ab",
+          "uuid": "d389f30e-4eb9-41ec-b5ae-1cd8c91e41fc",
           "title": "SecretShare",
           "fullFile": "C:\\dev\\src\\ed-vdf\\test\\secretShare.test.js",
           "file": "\\test\\secretShare.test.js",
@@ -501,7 +501,7 @@
               "title": "construct for 5 shares should be successfully return {Array(5){Buffer(18)}}",
               "fullTitle": "SecretShare construct for 5 shares should be successfully return {Array(5){Buffer(18)}}",
               "timedOut": false,
-              "duration": 5,
+              "duration": 8,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -510,15 +510,15 @@
               "context": null,
               "code": "const secret_key = Math.getRandomBigInt(99n, 256n);\nconst shares = SecretShare.construct(Buffer.from(secret_key.toString()), { shares: 5, threshold: 3 });\nreturn expect(shares).to.have.lengthOf(5);",
               "err": {},
-              "uuid": "c5beea5e-0abb-486c-991a-bdbcd10470b5",
-              "parentUUID": "5696eb61-9c7f-418c-b56c-6fdf1f8524ab",
+              "uuid": "2ce2af05-5300-4e23-8af7-2b912c3aec37",
+              "parentUUID": "d389f30e-4eb9-41ec-b5ae-1cd8c91e41fc",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [
             {
-              "uuid": "d6877157-2796-43c7-a604-1ed211dc44b3",
+              "uuid": "2d8abfad-f917-473f-ac82-84103f993d1f",
               "title": "reconstruct",
               "fullFile": "C:\\dev\\src\\ed-vdf\\test\\secretShare.test.js",
               "file": "\\test\\secretShare.test.js",
@@ -529,7 +529,7 @@
                   "title": "with 3 shares for threshold 3 should be equal {secret_key}",
                   "fullTitle": "SecretShare reconstruct with 3 shares for threshold 3 should be equal {secret_key}",
                   "timedOut": false,
-                  "duration": 1,
+                  "duration": 2,
                   "state": "passed",
                   "speed": "fast",
                   "pass": true,
@@ -538,8 +538,8 @@
                   "context": null,
                   "code": "const secret_key = Math.getRandomBigInt(99n, 256n);\nconst shares = SecretShare.construct(Buffer.from(secret_key.toString()), { shares: 5, threshold: 3 });\nconst reconstruct_secret_key = SecretShare.reconstruct(shares.slice(0, 3));\nreturn expect(reconstruct_secret_key).to.be.eql(secret_key);",
                   "err": {},
-                  "uuid": "515de46b-700f-47f2-92fa-685ade757df1",
-                  "parentUUID": "d6877157-2796-43c7-a604-1ed211dc44b3",
+                  "uuid": "022d5bc0-3617-4f07-8e06-203943f13710",
+                  "parentUUID": "2d8abfad-f917-473f-ac82-84103f993d1f",
                   "isHook": false,
                   "skipped": false
                 },
@@ -556,8 +556,8 @@
                   "context": null,
                   "code": "const secret_key = Math.getRandomBigInt(99n, 256n);\nconst shares = SecretShare.construct(Buffer.from(secret_key.toString()), { shares: 5, threshold: 3 });\nconst reconstruct_secret_key = SecretShare.reconstruct(shares.slice(0, 4));\nreturn expect(reconstruct_secret_key).to.be.eql(secret_key);",
                   "err": {},
-                  "uuid": "e844bf12-5c9c-4706-ba75-5fab58707d4f",
-                  "parentUUID": "d6877157-2796-43c7-a604-1ed211dc44b3",
+                  "uuid": "420177b4-5913-407f-88f8-5ac0ed4d5fc7",
+                  "parentUUID": "2d8abfad-f917-473f-ac82-84103f993d1f",
                   "isHook": false,
                   "skipped": false
                 },
@@ -565,7 +565,7 @@
                   "title": "_reconstructWithEveryEncoding with 3 shares for threshold 3 should be return {secret_key} for each SecretShare._encodings",
                   "fullTitle": "SecretShare reconstruct _reconstructWithEveryEncoding with 3 shares for threshold 3 should be return {secret_key} for each SecretShare._encodings",
                   "timedOut": false,
-                  "duration": 5,
+                  "duration": 4,
                   "state": "passed",
                   "speed": "fast",
                   "pass": true,
@@ -574,8 +574,8 @@
                   "context": null,
                   "code": "const secret_key = Math.getRandomBigInt(99n, 256n);\nconst shares = SecretShare.construct(Buffer.from(secret_key.toString()), { shares: 5, threshold: 3 });\nconst reconstruct_secret_keys = SecretShare._reconstructWithEveryEncoding(shares.slice(0, 4));\nreturn expect(Object.keys(reconstruct_secret_keys)).to.have.lengthOf(10)",
                   "err": {},
-                  "uuid": "21fa6589-da45-4bd6-8665-3572f6f6a86d",
-                  "parentUUID": "d6877157-2796-43c7-a604-1ed211dc44b3",
+                  "uuid": "6f792cc9-9ab6-405c-be2d-01f01a71885f",
+                  "parentUUID": "2d8abfad-f917-473f-ac82-84103f993d1f",
                   "isHook": false,
                   "skipped": false
                 },
@@ -583,7 +583,7 @@
                   "title": "with 2 shares for threshold 3 should throw {`reconstruct:shares:2: can not reconstructed`}",
                   "fullTitle": "SecretShare reconstruct with 2 shares for threshold 3 should throw {`reconstruct:shares:2: can not reconstructed`}",
                   "timedOut": false,
-                  "duration": 3,
+                  "duration": 4,
                   "state": "passed",
                   "speed": "fast",
                   "pass": true,
@@ -592,35 +592,35 @@
                   "context": null,
                   "code": "const secret_key = Math.getRandomBigInt(99n, 256n);\nconst shares = SecretShare.construct(Buffer.from(secret_key.toString()), { shares: 5, threshold: 3 });\nreturn expect(() => SecretShare.reconstruct(shares.slice(0, 2))).to.be.throw(`reconstruct:shares:2: can not reconstructed`)",
                   "err": {},
-                  "uuid": "3ed5191d-7a17-494b-b18d-32e8cb6d64e2",
-                  "parentUUID": "d6877157-2796-43c7-a604-1ed211dc44b3",
+                  "uuid": "91d94544-a266-4c23-97fa-c1f64a214b40",
+                  "parentUUID": "2d8abfad-f917-473f-ac82-84103f993d1f",
                   "isHook": false,
                   "skipped": false
                 }
               ],
               "suites": [],
               "passes": [
-                "515de46b-700f-47f2-92fa-685ade757df1",
-                "e844bf12-5c9c-4706-ba75-5fab58707d4f",
-                "21fa6589-da45-4bd6-8665-3572f6f6a86d",
-                "3ed5191d-7a17-494b-b18d-32e8cb6d64e2"
+                "022d5bc0-3617-4f07-8e06-203943f13710",
+                "420177b4-5913-407f-88f8-5ac0ed4d5fc7",
+                "6f792cc9-9ab6-405c-be2d-01f01a71885f",
+                "91d94544-a266-4c23-97fa-c1f64a214b40"
               ],
               "failures": [],
               "pending": [],
               "skipped": [],
-              "duration": 10,
+              "duration": 11,
               "root": false,
               "rootEmpty": false,
               "_timeout": 300000
             }
           ],
           "passes": [
-            "c5beea5e-0abb-486c-991a-bdbcd10470b5"
+            "2ce2af05-5300-4e23-8af7-2b912c3aec37"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 5,
+          "duration": 8,
           "root": false,
           "rootEmpty": false,
           "_timeout": 300000

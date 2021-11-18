@@ -12,7 +12,7 @@ describe("ED-VDF", function () {
     const RSA_KEYS_BIT_LENGTH = 256;
     const X = 1337;
 
-    it("Setup should be successfully return {PublicParameters[N, Time_10s], PrivateParameters}", async function () {
+    it("Setup should be successfully return {PublicParameters[N, TIME[\"10s\"], PrivateParameters}", async function () {
         const {PublicParameters, Totient} = await EDVDF.Setup(RSA_KEYS_BIT_LENGTH, constants.TIME["10s"]);
         return expect(typeof PublicParameters.N).to.be.eql('bigint')
             && expect(PublicParameters.Time).to.be.eql(constants.TIME["10s"])
