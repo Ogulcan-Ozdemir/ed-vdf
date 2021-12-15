@@ -5,7 +5,7 @@ const {expect} = require("chai");
 describe("SecretShare", function () {
 
     const Math = require('../scripts/misc/math/index');
-    const SecretShare = require('../scripts/SecretShare');
+    const SecretShare = require('../scripts/encryption/ShamirSecretShare');
 
     it("construct for 5 shares should be successfully return {Array(5){Buffer(18)}}", async function () {
         const secret_key = Math.getRandomBigInt(99n, 256n);

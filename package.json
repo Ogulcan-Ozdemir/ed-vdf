@@ -5,33 +5,36 @@
   "main": "index.js",
   "scripts": {
     "test": "hardhat test",
-    "test:specific": "hardhat test ./test/edvdf.test.js",
-    "test:specific:trace": "hardhat --show-stack-traces test ./test/edvdf.contract.test.js",
-    "compile": "hardhat compile",
-    "node": "hardhat node"
+    "test:specific": "hardhat test ./test/edvdf.contract.test.js",
+    "simulate:network": "hardhat node",
+    "start:client": "hardhat compile && node scripts/simulate/client.js --network localhost",
+    "start:node": "hardhat compile && node scripts/simulate/node.js --network localhost"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
-    "@nomiclabs/buidler": "^1.4.8",
-    "@nomiclabs/hardhat-ethers": "^2.0.2",
-    "@nomiclabs/hardhat-waffle": "^2.0.1",
     "@types/chai": "^4.2.21",
     "@types/chai-as-promised": "^7.1.4",
     "@types/mocha": "^9.0.0",
     "chai": "^4.3.4",
     "chai-as-promised": "^7.1.1",
-    "ethereum-waffle": "^3.4.0",
-    "ethers": "^5.4.1",
-    "hardhat": "^2.4.3",
     "mochawesome": "^6.2.2",
     "mochawesome-report-generator": "^5.2.0"
   },
   "dependencies": {
+    "@nomiclabs/buidler": "^1.4.8",
+    "@nomiclabs/hardhat-ethers": "^2.0.2",
+    "@nomiclabs/hardhat-ganache": "^2.0.1",
+    "@nomiclabs/hardhat-waffle": "^2.0.1",
     "big-integer": "^1.6.48",
     "bigint-crypto-utils": "^3.0.14",
+    "eccrypto": "^1.1.6",
+    "ethereum-waffle": "^3.4.0",
+    "ethers": "^5.4.1",
+    "hardhat": "^2.4.3",
     "keccak": "^3.0.1",
+    "secp256k1": "^4.0.2",
     "shamirs-secret-sharing": "^1.0.1"
   }
 }

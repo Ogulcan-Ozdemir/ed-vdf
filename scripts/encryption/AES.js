@@ -1,5 +1,3 @@
-'use strict';
-
 const crypto = require('crypto');
 const IV_LENGTH = 16;
 
@@ -13,7 +11,8 @@ function getAsKey(key){
 function encrypt(key, text) {
     const iv = crypto.randomBytes(IV_LENGTH);
     const cipher = crypto.createCipheriv('aes-256-cbc', key, iv);
-    const encrypted = cipher.update(text) + cipher.final('hex');
+    let encrypted = cipher.update(text, 'utf8', 'base64');
+    encrypted += cipher.final('base64');
     return {
         iv: iv,
         encrypted: encrypted
@@ -21,13 +20,12 @@ function encrypt(key, text) {
 }
 
 function decrypt({iv, key}, encrypted) {
-    const decipher = crypto.createDecipheriv('aes-256-cbc', key, iv);
-    if(!Buffer.isBuffer(encrypted)){
-        encrypted = Buffer.from(encrypted, 'hex');
+    if(!Buffer.isBuffer(iv)){
+        iv = Buffer.from(iv, 'hex');
     }
-    let decrypted = decipher.update(Buffer.from(encrypted, 'hex'));
-    decrypted = Buffer.concat([decrypted, decipher.final()]);
-    return decrypted.toString();
+    const decipher = crypto.createDecipheriv('aes-256-cbc', key, iv);
+    let decrypted = decipher.update(encrypted, 'base64', 'utf8');
+    return (decrypted + decipher.final('utf8'));
 }
 
 module.exports = { decrypt, encrypt, getAsKey };

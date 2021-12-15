@@ -27,9 +27,11 @@ module.exports.WaitEvent = (provider, eventName, timeout) => {
     }
 };
 
+
+
 module.exports.waitAsync = require('util').promisify((a, b) => setTimeout(b, a));
 
 function log(...args){
-    console.log(...args);
+    console.log(new Date().toISOString(), process.pid, ...args);
 }
 module.exports.log = log;

@@ -4,7 +4,7 @@ const {expect} = require("chai");
 
 describe("RSA", function () {
 
-    const RSA = require('../scripts/RSA');
+    const RSA = require('../scripts/encryption/RSA');
 
     it("Setup should be successfully return {SecretKeys, PublicKeys} with bit length 256", async function () {
         const {SecretKeys, PublicKeys} = await RSA.Setup(256);

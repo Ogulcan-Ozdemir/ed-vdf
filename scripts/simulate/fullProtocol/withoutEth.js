@@ -1,6 +1,6 @@
-const EDVDF = require('./ED_VDF');
-const {TIME} = require('./constants');
-const AES = require('./AES');
+const EDVDF = require('../../ED_VDF');
+const {TIME} = require('../../misc/constants');
+const AES = require('../../encryption/AES');
 
 (async () => {
     const tasks = [];

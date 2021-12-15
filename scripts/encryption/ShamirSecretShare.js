@@ -1,5 +1,5 @@
 const sss = require('shamirs-secret-sharing');
-const MathUtils = require('../scripts/misc/math/index');
+const MathUtils = require('../misc/math');
 const encodings = ["ascii", "utf8", "utf-8", "utf16le", "ucs2", "ucs-2", "base64", "latin1", "binary", "hex"];
 
 const self = {

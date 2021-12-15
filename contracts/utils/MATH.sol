@@ -1,109 +1,11 @@
 pragma solidity ^0.6.1;
 pragma experimental ABIEncoderV2;
 // SPDX-License-Identifier: MIT
-
 import "@nomiclabs/buidler/console.sol";
-import * as MATH_UTILS from "./utils/MATH.sol";
 
-contract ED_VDF {
+contract MATH {
 
-    string public name = 'ED_VDF';
-    string public STATUS = 'NO_INIT';
-
-    address payable public SENDER;
-    string[] SECRET_SHARER_PARTICIPANTS;
-    string public RECIPIENT;
-
-    uint256 public N;
-    uint256 public Time;
-    uint256 public x;
-    string public encryptedMessage = '';
-    string public iv = '';
-
-    uint256 public INIT_TIMESTAMP = 0 seconds;
-
-    event SETUP(uint256 _x);
-    event EARLY_DECRYPTION_SETUP(string[] participants);
-    event EVAL(uint256 N, uint256 T, uint256 _x);
-    event VERIFY(address from, uint256 _EvalPrivateParameter, uint256 _EvalProof);
-
-    constructor() public {
-        SENDER = msg.sender;
-        STATUS = 'INIT';
-    }
-
-    function Setup(uint256 _N, uint256 _T, string memory _RECIPIENT) public
-    {
-        require(SENDER == msg.sender);
-        require(keccak256(abi.encodePacked(STATUS)) == keccak256('INIT'), 'ED_VDF should be at INIT status before Setup phase');
-
-        INIT_TIMESTAMP = block.timestamp;
-
-        STATUS = 'SETUP';
-        Time = _T;
-        N = _N;
-        RECIPIENT = _RECIPIENT;
-
-        x = uint256(blockhash(block.number - 1)) % N;
-
-        emit SETUP(x);
-    }
-
-    function EarlyDecryptionSetup(string[] memory _SECRET_SHARER_PARTICIPANTS) public
-    {
-        require(SENDER == msg.sender);
-        require(keccak256(abi.encodePacked(STATUS)) == keccak256('SETUP'), 'ED_VDF should be at SETUP status before EarlyDecryptionSetup phase');
-        require(bytes(encryptedMessage).length != 0, 'encryptedMessage should be set before EarlyDecryptionSetup phase');
-
-        STATUS = 'EARLY_DECRYPTION_SETUP';
-
-        SECRET_SHARER_PARTICIPANTS = _SECRET_SHARER_PARTICIPANTS;
-        emit EARLY_DECRYPTION_SETUP(SECRET_SHARER_PARTICIPANTS);
-        emit EVAL(N, Time, x);
-    }
-
-    function Eval() private
-    {
-        require(keccak256(abi.encodePacked(STATUS)) == keccak256('EARLY_DECRYPTION_SETUP'), 'ED_VDF:Eval should be at EARLY_DECRYPTION_SETUP status before Eval phase');
-        emit EVAL(N, Time, x);
-    }
-
-    function Verify(uint256 EvalPrivateParameter, uint256 EvalProof) public
-    {
-        require(keccak256(abi.encodePacked(STATUS)) == keccak256('EVAL'), 'ED_VDF:Verify should be at EVAL status before Verify phase');
-        require(EvalPrivateParameter <= N &&  EvalProof <= N, 'ED_VDF:Verify EvalPrivateParameter or EvalProof should be less than N');
-        emit VERIFY(msg.sender, EvalPrivateParameter, EvalProof);
-    }
-
-    function setEncryptedMessage(string memory _encryptedMessage) public {
-        require(SENDER == msg.sender);
-        require(keccak256(abi.encodePacked(STATUS)) == keccak256('SETUP'), 'ED_VDF should be at SETUP status before setEncryptedMessage');
-        require(bytes(encryptedMessage).length == 0, 'encryptedMessage already set');
-        require(bytes(_encryptedMessage).length != 0, 'encryptedMessage not be empty string');
-        encryptedMessage = _encryptedMessage;
-    }
-
-    function setEncryptedMessageIV(string memory _iv) public {
-        require(SENDER == msg.sender);
-        require(keccak256(abi.encodePacked(STATUS)) == keccak256('SETUP'), 'ED_VDF should be at SETUP status before setEncryptedMessage');
-        require(bytes(iv).length == 0, 'iv already set');
-        require(bytes(_iv).length != 0, 'iv not be empty string');
-        iv = _iv;
-    }
-
-    function setStateToEval() public {
-        require(keccak256(abi.encodePacked(STATUS)) == keccak256('EARLY_DECRYPTION_SETUP'), 'ED_VDF:setStateToEval should be at EARLY_DECRYPTION_SETUP status before Eval phase');
-        STATUS = 'EVAL';
-    }
-
-    function setStateToVerify() public {
-        require(keccak256(abi.encodePacked(STATUS)) == keccak256('EVAL'), 'ED_VDF:setStateToVerify should be at EVAL status before Verify phase');
-        STATUS = 'VERIFY';
-    }
-
-    function get_SECRET_SHARER_PARTICIPANTS() public view returns (string[] memory) {
-        return SECRET_SHARER_PARTICIPANTS;
-    }
+    string public name = 'ED_VDF_UTILS_MATH';
 
     function HPrime(uint256 _N, uint256 _T, uint256 _X, uint256 _Y)  view private returns (uint256)
     {

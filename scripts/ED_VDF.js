@@ -3,8 +3,8 @@ const bigintCryptoUtils = require('bigint-crypto-utils');
 const keccak = require('keccak');
 const BigInteger = require('big-integer');
 const integerByte = require('./misc/math/IntegerByte');
-const RSA = require('./RSA');
-const SecretShare = require("./SecretShare");
+const RSA = require('./encryption/RSA');
+const SecretShare = require("./encryption/ShamirSecretShare");
 
 const self = {
     async Setup(Size, Time) {

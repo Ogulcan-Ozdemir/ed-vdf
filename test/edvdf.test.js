@@ -6,7 +6,7 @@ const BigInteger = require('big-integer');
 describe("ED-VDF", function () {
 
     const MathUtils = require('../scripts/misc/math');
-    const constants = require('../scripts/constants');
+    const constants = require('../scripts/misc/constants');
     const EDVDF = require('../scripts/ED_VDF');
 
     const RSA_KEYS_BIT_LENGTH = 256;
