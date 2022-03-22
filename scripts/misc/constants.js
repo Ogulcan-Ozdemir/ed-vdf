@@ -12,6 +12,7 @@ module.exports = {
     EVENTS: {
         SETUP: "SETUP(uint256)",
         EARLY_DECRYPTION_SETUP: "EARLY_DECRYPTION_SETUP(string[])",
+        EARLY_DECRYPTION: "EARLY_DECRYPTION()",
         EVAL: "EVAL(uint256,uint256,uint256)",
         VERIFY: "VERIFY(address,uint256,uint256)",
     },

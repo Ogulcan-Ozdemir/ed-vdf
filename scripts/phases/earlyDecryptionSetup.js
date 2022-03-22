@@ -5,7 +5,7 @@ module.exports = async ({ PrivateParameter, SecretSharers, address}) => {
     const threshold = validateSecretSharersAndGetThreshold(SecretSharers);
     const shares = EDVDF.EarlyDecryptionSetup(Buffer.from(PrivateParameter.toString()), { shares: SecretSharers.length, threshold });
     const EDVdfContractABI = await ethereumGate.getContractAt(address);
-    const shareDistribution = await ethereumGate.sendSecretSharesToParticipants(EDVdfContractABI.signer, SecretSharers, shares);
+    await ethereumGate.sendSecretSharesToParticipants(EDVdfContractABI.signer, SecretSharers, shares);
     await EDVdfContractABI.EarlyDecryptionSetup(SecretSharers);
 }
 

@@ -2,6 +2,7 @@ const ethereumGate = require('../misc/ethereumGate');
 const EDVDF = require("../ED_VDF");
 const AES = require("../encryption/AES");
 const { log } = require('../misc/utils');
+
 module.exports = async ({message, recipient, TIME}) => {
     const EDVdfContractABI = await ethereumGate.getEDVdfContractABI();
     const {PublicParameters, Totient} = await EDVDF.Setup(256, TIME);
