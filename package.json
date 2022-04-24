@@ -6,9 +6,10 @@
   "scripts": {
     "test": "hardhat test",
     "test:specific": "hardhat test ./test/edvdf.contract.test.js",
-    "simulate:network": "hardhat node",
-    "start:client": "hardhat compile && node scripts/simulate/client.js --network localhost",
-    "start:node": "hardhat compile && node scripts/simulate/node.js --network localhost"
+    "simulate:node": "hardhat node",
+    "simulate:network": "hardhat compile && node scripts/simulate/network/index.js --network localhost",
+    "simulate:protocol:withEth": "hardhat compile && node scripts/simulate/protocol/withEth.js --network localhost",
+    "simulate:protocol:withoutEth": "node scripts/simulate/protocol/withoutEth.js"
   },
   "keywords": [],
   "author": "",

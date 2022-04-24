@@ -1,12 +1,12 @@
 const {ethers} = require('hardhat');
-const { log } = require('../misc/utils');
-const {EVENTS, PHASES} = require('../misc/constants');
-const ethereumGate = require("../misc/ethereumGate");
-const Math = require("../misc/math");
-const Eval = require("../phases/eval");
-const EarlyDecryption = require("../phases/earlyDecryption");
-const Verify = require("../phases/verify");
-const AES = require("../encryption/AES");
+const { log } = require('../../misc/utils');
+const {EVENTS, PHASES} = require('../../misc/constants');
+const ethereumGate = require("../../misc/ethereumGate");
+const Math = require("../../misc/math");
+const Eval = require("../../phases/eval");
+const EarlyDecryption = require("../../phases/earlyDecryption");
+const Verify = require("../../phases/verify");
+const AES = require("../../encryption/AES");
 
 async function listenEval(){
         const EDVdfContractABI = await ethereumGate.getEDVdfContractABI();
